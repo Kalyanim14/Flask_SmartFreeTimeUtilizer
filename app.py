@@ -5,13 +5,11 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import traceback
 
-# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-# Initialize OpenRouter client using OpenAI SDK
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.getenv("OPENROUTER_API_KEY")
@@ -34,33 +32,46 @@ def process_data():
             if field not in data or not str(data[field]).strip():
                 return jsonify({'error': f'Missing required field: {field}'}), 400
 
+        # Optional context-aware fields
+        domain = data.get('domain', 'general learner')
+        time_available = data.get('time_available', 'Not specified')
+        interest = data.get('interest', 'Not specified')
+        context = data.get('context', 'Not provided')
+
         # Extract user input
         name = data['name']
         age = data['age']
         topic = data['topic']
         purpose = data['purpose']
-        context = data.get('context', 'Not provided')
 
         # Construct AI prompt
         user_prompt = (
             f"User info:\n"
-            f"Name: {name}\n"
-            f"Age: {age}\n"
-            f"Topic: {topic}\n"
-            f"Purpose: {purpose}\n"
-            f"Context: {context}\n\n"
-            f"Generate a friendly, well-structured, and helpful explanation or guidance for the user."
+            f"- Name: {name}\n"
+            f"- Age: {age}\n"
+            f"- Domain/Background: {domain}\n"
+            f"- Current Interest: {interest}\n"
+            f"- Time Available: {time_available}\n"
+            f"- Topic: {topic}\n"
+            f"- Purpose: {purpose}\n"
+            f"- Context: {context}\n\n"
+            f"Generate an explanation or learning guide tailored to this user.\n"
+            f"The response should:\n"
+            f"1. Match their knowledge level (based on domain).\n"
+            f"2. Connect the explanation to their current interests.\n"
+            f"3. Fit within the time they have (e.g., short summary if less time, detailed guide if more).\n"
+            f"4. Be friendly, easy to follow, and motivating.\n"
+            f"End with a short suggestion for what the user can do next related to the topic."
         )
 
-        # Call OpenRouter API via OpenAI client (using a free model)
         completion = client.chat.completions.create(
             extra_headers={
-                "HTTP-Referer": "http://localhost:3000",  # Optional: your site URL
-                "X-Title": "SmartFreeTimeUtilizer"       # Optional: your app/site name
+                "HTTP-Referer": "http://localhost:3000",
+                "X-Title": "SmartFreeTimeUtilizer"
             },
             model="tngtech/deepseek-r1t2-chimera:free",
             messages=[
-                {"role": "system", "content": "You are a friendly AI tutor who provides helpful and age-appropriate information."},
+                {"role": "system", "content": "You are a friendly AI tutor who personalizes content based on user's domain, interest, and available time."},
                 {"role": "user", "content": user_prompt}
             ]
         )
@@ -73,7 +84,6 @@ def process_data():
         })
 
     except Exception as e:
-        # Print full error details in console
         traceback.print_exc()
         print(f"Error in process-data: {e}")
         return jsonify({'error': str(e)}), 500
