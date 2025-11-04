@@ -2,4 +2,8 @@ Flask
 gunicorn
 flask-cors
 python-dotenv
+<<<<<<< HEAD
 openai
+=======
+openai
+>>>>>>> 521ce90b49c86a85438e86b291482ce1e393df9f
