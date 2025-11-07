@@ -33,14 +33,61 @@
   ],
   "sharvani": [
     {
-      "prompt_summary": "Productivity | Improving skills",
-      "response_summary": "Here are 3 concise, 15-minute productivity tasks tailored for your engineering/web development goals:  ---  ### **1. Tas",
-      "timestamp": 1762275637
+      "prompt_summary": "Career Guidance | Improving skills",
+      "response_summary": "Here are **3 cybersecurity tasks** blending hardware & creativity (15-20 minutes each), designed for your age/skills:",
+      "timestamp": 1762493686
     },
     {
-      "prompt_summary": "additions | Boosting creativity",
-      "response_summary": "Here are **3 playful addition tasks** to boost creativity in your classroom (15-20 minutes each). *No special materials",
-      "timestamp": 1762277155
+      "prompt_summary": "Study Tips | Relaxing productively",
+      "response_summary": "Here are 3 relaxing-yet-productive study tasks for your engineering/web development focus (15-20 mins each):  ---  ### *",
+      "timestamp": 1762517368
+    },
+    {
+      "prompt_summary": "Study Tips | Relaxing productively",
+      "response_summary": "### **Relaxing Productivity Study Tasks for Shar**   Given your focus on **web development/engineering** and need for st",
+      "timestamp": 1762517422
+    },
+    {
+      "prompt_summary": "Study Tips | Relaxing productively",
+      "response_summary": "### **Relaxing Productive Study Tasks for Shar**   Here are 3 creative, low-pressure tasks that blend **web development*",
+      "timestamp": 1762517643
+    },
+    {
+      "prompt_summary": "Productivity",
+      "response_summary": "Here are 3 focused productivity micro-tasks perfectly suited for your 30-minute timeframe, combining your teaching backg",
+      "timestamp": 1762531652
+    },
+    {
+      "prompt_summary": "Productivity",
+      "response_summary": "### Micro-Task 1: **Time-Blocking Your Teaching Prep**   **Description:** Design a 15-minute time-blocked schedule for a",
+      "timestamp": 1762531999
+    },
+    {
+      "prompt_summary": "Productivity",
+      "response_summary": "### Micro-Task 1   **Title:** 5-Minute Desk Declutter   **Description:** Clear and organize your workspace in just five",
+      "timestamp": 1762532596
+    },
+    {
+      "prompt_summary": "communication skills",
+      "response_summary": "### Micro-Task 1   **Title:** Active Listening Drill   **Description:** Practice focused listening using a 10-minute edu",
+      "timestamp": 1762534120
+    },
+    {
+      "prompt_summary": "communication skills",
+      "response_summary": "Here are 3 targeted micro-tasks to develop your communication skills as an engineering student, building on your prior l",
+      "timestamp": 1762535221
+    },
+    {
+      "prompt_summary": "communication skills",
+      "response_summary": "Here are 3 targeted micro-tasks to elevate your technical communication skills as an engineering student:  ---  **1. Tit",
+      "timestamp": 1762535751
+    }
+  ],
+  "David Kim": [
+    {
+      "prompt_summary": "communications",
+      "response_summary": "### Task 1: **Understanding Communication Contexts**   **Description**   Learn the *purpose* of context in communication",
+      "timestamp": 1762534606
     }
   ]
 }

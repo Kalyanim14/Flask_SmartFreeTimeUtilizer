@@ -105,7 +105,7 @@ def process_data():
         if not data:
             return jsonify({'error': 'No JSON data provided'}), 400
 
-        required_fields = ['username', 'name', 'age', 'topic', 'purpose']
+        required_fields = ['username', 'name', 'age', 'topic']
         for field in required_fields:
             if field not in data or not str(data[field]).strip():
                 return jsonify({'error': f'Missing required field: {field}'}), 400
@@ -113,12 +113,10 @@ def process_data():
         username = data['username']
         domain = data.get('domain', 'general learner')
         time_available = data.get('time_available', 'Not specified')
-        interest = data.get('interest', 'Not specified')
         context = data.get('context', 'Not provided')
         name = data['name']
         age = data['age']
         topic = data['topic']
-        purpose = data['purpose']
 
         # load history
         history = load_history()
@@ -131,17 +129,14 @@ def process_data():
 
         # build user prompt for the model
         user_prompt = (
-            f"User info:\n"
-            f"- Name: {name}\n"
-            f"- Age: {age}\n"
-            f"- Domain: {domain}\n"
-            f"- Interest: {interest}\n"
-            f"- Time Available: {time_available}\n"
-            f"- Topic: {topic}\n"
-            f"- Purpose: {purpose}\n"
-            f"- Context: {context}\n\n"
-            f"Previous sessions (summarized):\n{recent_history_summary}\n\n"
-            f"Now, generate a best suitable task to suite the user needs, suggest 3 best tasks to do with task name, description, resources, best possible ways to achieve the task, keep it conscise, credit-efficient"
+            f"I'm {name}, a {age}-year-old in {domain}. "
+            f"I have {time_available} to learn {topic} in context: {context}. "
+            f"Previously I have learnt about:\n{recent_history_summary}\n\n"
+            "Please provide EXACTLY 3 micro-tasks. For EACH task, give this structure:\n"
+            "1. **Title**\n"
+            "2. **Detailed Description** (4–6 sentences)\n"
+            "3. **Small Tips** (bullet list of 3 items)\n\n"
+            "Respond in clear sections."
         )
 
         try:
@@ -174,7 +169,7 @@ def process_data():
         ai_response = completion.choices[0].message.content.strip()
 
         # compact token-efficient summaries & timestamp
-        prompt_summary = (f"{topic} | {purpose}")[:80]
+        prompt_summary = (f"{topic}")[:80]
         response_summary = ai_response[:120].replace("\n", " ").strip()
 
         new_entry = {
