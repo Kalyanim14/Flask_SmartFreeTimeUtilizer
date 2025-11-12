@@ -1,9 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import json, os, traceback
+import json, os, traceback, time, re
 from dotenv import load_dotenv
 from openai import OpenAI
-import time
 
 load_dotenv()
 
@@ -26,12 +25,10 @@ def load_json_file(filename):
             try:
                 return json.load(f)
             except json.JSONDecodeError:
-                # Corrupt or empty file -> return empty dict
                 return {}
     return {}
 
 def save_json_file(filename, data):
-    # ensure directory exists (if you ever put files in a subdir)
     os.makedirs(os.path.dirname(filename) or ".", exist_ok=True)
     with open(filename, "w") as f:
         json.dump(data, f, indent=2)
@@ -65,11 +62,7 @@ def signup():
     if username in users:
         return jsonify({"message": "User already exists!"}), 400
 
-    # store as object for future extensibility
-    users[username] = {
-        "name": name,
-        "password": password
-    }
+    users[username] = {"name": name, "password": password}
     save_users(users)
     return jsonify({"message": "Signup successful!"}), 201
 
@@ -86,7 +79,6 @@ def signin():
     users = load_users()
     user = users.get(username)
 
-    # Support older storage format (password string) and new object format
     if user:
         if isinstance(user, str) and user == password:
             return jsonify({"message": "Login successful!", "name": ""}), 200
@@ -111,34 +103,32 @@ def process_data():
                 return jsonify({'error': f'Missing required field: {field}'}), 400
 
         username = data['username']
-        domain = data.get('domain', 'general learner')
-        time_available = data.get('time_available', 'Not specified')
-        context = data.get('context', 'Not provided')
         name = data['name']
         age = data['age']
         topic = data['topic']
+        domain = data.get('domain', 'general learner')
+        time_available = data.get('time_available', 'Not specified')
+        context = data.get('context', 'Not provided')
 
-        # load history
+        # Load previous user history
         history = load_history()
         user_history = history.get(username, [])
-
-        # include short summaries of last few interactions
         recent_history_summary = "\n".join(
             [f"- {h.get('prompt_summary','?')} → {h.get('response_summary','')}" for h in user_history[-3:]]
         ) if user_history else "No prior history."
 
-        # build user prompt for the model
         user_prompt = (
             f"I'm {name}, a {age}-year-old in {domain}. "
             f"I have {time_available} to learn {topic} in context: {context}. "
             f"Previously I have learnt about:\n{recent_history_summary}\n\n"
             "Please provide EXACTLY 3 micro-tasks. For EACH task, give this structure:\n"
-            "1. *Title*\n"
-            "2. *Detailed Description* (4–6 sentences)\n"
-            "3. *Small Tips* (bullet list of 3 items)\n\n"
+            "1. **Title**\n"
+            "2. **Detailed Description** (4–6 sentences)\n"
+            "3. **Small Tips** (bullet list of 3 items)\n\n"
             "Respond in clear sections."
         )
 
+        # Call model with fallback
         try:
             completion = client.chat.completions.create(
                 extra_headers={
@@ -147,12 +137,12 @@ def process_data():
                 },
                 model="tngtech/deepseek-r1t2-chimera:free",
                 messages=[
-                    {"role": "system", "content": "You are a helpful AI tutor who provides context-aware, credit-efficient responses."},
+                    {"role": "system", "content": "You are a helpful AI tutor who provides structured, easy-to-follow learning tasks."},
                     {"role": "user", "content": user_prompt}
                 ]
             )
         except Exception as e:
-            print("⚠ Deepseek model failed, switching to backup:", e)
+            print("⚠️ Deepseek failed, switching to backup:", e)
             completion = client.chat.completions.create(
                 extra_headers={
                     "HTTP-Referer": "http://localhost:3000",
@@ -160,18 +150,25 @@ def process_data():
                 },
                 model="meta-llama/llama-3.1-8b-instruct:free",
                 messages=[
-                    {"role": "system", "content": "You are a helpful AI tutor who provides context-aware, credit-efficient responses."},
+                    {"role": "system", "content": "You are a helpful AI tutor who provides structured, easy-to-follow learning tasks."},
                     {"role": "user", "content": user_prompt}
                 ]
             )
 
+        ai_response_str = completion.choices[0].message.content.strip()
 
-        ai_response = completion.choices[0].message.content.strip()
+        # ---------- JSON-safe fallback ----------
+        ai_response = ai_response_str
+        prompt_summary = topic
+        try:
+            # Extract **Task Titles** from markdown
+            titles = re.findall(r"## Task \d+: \*\*(.*?)\*\*", ai_response_str)
+            if titles:
+                prompt_summary = ", ".join(titles)
+        except Exception as e:
+            print(f"⚠️ Title extraction failed: {e}")
 
-        # compact token-efficient summaries & timestamp
-        prompt_summary = (f"{topic}")[:80]
         response_summary = ai_response[:120].replace("\n", " ").strip()
-
         new_entry = {
             "prompt_summary": prompt_summary,
             "response_summary": response_summary,
@@ -179,12 +176,12 @@ def process_data():
         }
 
         user_history.append(new_entry)
-        history[username] = user_history[-10:]  # keep last 10 entries only
+        history[username] = user_history[-10:]
         save_history(history)
 
         return jsonify({
-            'success': True,
-            'response': ai_response
+            "success": True,
+            "response": ai_response
         })
 
     except Exception as e:
@@ -192,7 +189,7 @@ def process_data():
         return jsonify({'error': str(e)}), 500
 
 
-# ========== History endpoints (aliases) ==========
+# ========== History Endpoints ==========
 
 @app.route('/api/history/<username>', methods=['GET'])
 @app.route('/history/<username>', methods=['GET'])
@@ -201,7 +198,7 @@ def get_history(username):
     user_history = history.get(username, [])
     return jsonify({"history": user_history}), 200
 
-# Optional: clear history for a user (useful for testing / UI "clear" button)
+
 @app.route('/api/history/<username>', methods=['DELETE'])
 def delete_history(username):
     history = load_history()
@@ -211,25 +208,26 @@ def delete_history(username):
     return jsonify({"message": "History cleared"}), 200
 
 
-# ========== Health & Home ==========
+# ========== Health & Root ==========
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
     return jsonify({
-        'status': 'healthy',
-        'message': 'Backend running with user history support'
+        "status": "healthy",
+        "message": "Backend running with user history support"
     })
 
 
 @app.route('/')
 def home():
     return jsonify({
-        'message': 'Flask Backend with History is running!',
-        'endpoints': {
-            'signup': '/signup (POST)',
-            'signin': '/signin (POST)',
-            'process_data': '/api/process-data (POST)',
-            'history': '/api/history/<username> (GET) (alias: /history/<username>)'
+        "message": "Flask Backend with History is running!",
+        "endpoints": {
+            "signup": "/signup (POST)",
+            "signin": "/signin (POST)",
+            "process_data": "/api/process-data (POST)",
+            "history": "/api/history/<username> (GET)",
+            "clear_history": "/api/history/<username> (DELETE)"
         }
     })
 
@@ -237,3 +235,4 @@ def home():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, host='0.0.0.0', port=port)
+#additional app.py in case of emergency

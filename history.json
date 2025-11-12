@@ -1,93 +1,54 @@
 {
-  "kalyani": [
+  "kalyani5": [
     {
-      "prompt_summary": "Programming | Improving skills",
-      "response_summary": "Here's a focused 30-minute web development activity tailored for you:  **Activity:** Build an Interactive Counter   *Rei",
-      "timestamp": 1762266523
+      "prompt_summary": "Productivity",
+      "response_summary": "### Micro-Task 1   **Title**: *Define Your Top 3 Daily Goals*   **Detailed Description**:   Start by identifying the **m",
+      "timestamp": 1762950201
     },
     {
-      "prompt_summary": "Study Tips | Improving skills",
-      "response_summary": "**Activity:** Build a Countdown Timer (30-Minute Web Dev Sprint)    **Why This?**   Level up your DOM manipulation & sta",
-      "timestamp": 1762266659
+      "prompt_summary": "Prioritize Tasks with the Eisenhower Matrix, Set Up a 5-Minute Shutdown Routine, Revamp Your Distraction List into Action",
+      "response_summary": "## Task 1: **Prioritize Tasks with the Eisenhower Matrix** **Detailed Description** (4\u20136 sentences) Learn to categorize",
+      "timestamp": 1762950259
     },
     {
-      "prompt_summary": "Productivity | Boosting creativity",
-      "response_summary": "**Activity:** Build a Dynamic Word Frequency Visualizer   *(30-Minute Web Dev + Creativity Boost)*    **Why This?**   -",
-      "timestamp": 1762267258
-    },
-    {
-      "prompt_summary": "Productivity | Boosting creativity",
-      "response_summary": "Here are **3 creative data-driven tasks** tailored to boost productivity through Data Science concepts (30 mins each):",
-      "timestamp": 1762267456
-    },
-    {
-      "prompt_summary": "Productivity | Relaxing productively",
-      "response_summary": "Here are **2 focused tasks** blending cybersecurity, creativity, and relaxation \u2013 perfect for a productive 1-hour break:",
-      "timestamp": 1762269532
-    },
-    {
-      "prompt_summary": "Productivity | Relaxing productively",
-      "response_summary": "Here are **3 cybersecurity-themed productive relaxation tasks** that blend creativity with light technical engagement (e",
-      "timestamp": 1762269731
-    }
-  ],
-  "sharvani": [
-    {
-      "prompt_summary": "Career Guidance | Improving skills",
-      "response_summary": "Here are **3 cybersecurity tasks** blending hardware & creativity (15-20 minutes each), designed for your age/skills:",
-      "timestamp": 1762493686
-    },
-    {
-      "prompt_summary": "Study Tips | Relaxing productively",
-      "response_summary": "Here are 3 relaxing-yet-productive study tasks for your engineering/web development focus (15-20 mins each):  ---  ### *",
-      "timestamp": 1762517368
-    },
-    {
-      "prompt_summary": "Study Tips | Relaxing productively",
-      "response_summary": "### **Relaxing Productivity Study Tasks for Shar**   Given your focus on **web development/engineering** and need for st",
-      "timestamp": 1762517422
-    },
-    {
-      "prompt_summary": "Study Tips | Relaxing productively",
-      "response_summary": "### **Relaxing Productive Study Tasks for Shar**   Here are 3 creative, low-pressure tasks that blend **web development*",
-      "timestamp": 1762517643
+      "prompt_summary": "Design Your Focus-Driven Daily Blueprint, Execute the Eisenhower Sprint Challenge, Conduct a Lightning-Fast Productivity Audit",
+      "response_summary": "## Task 1: **Design Your Focus-Driven Daily Blueprint** **Detailed Description** (4\u20136 sentences) Create a 15-minute time",
+      "timestamp": 1762951048
     },
     {
       "prompt_summary": "Productivity",
-      "response_summary": "Here are 3 focused productivity micro-tasks perfectly suited for your 30-minute timeframe, combining your teaching backg",
-      "timestamp": 1762531652
+      "response_summary": "### Micro-Task 1   **Title**: **Execute a 12-Minute Hyper-Focused Work Sprint**   **Detailed Description**:   Set a time",
+      "timestamp": 1762951275
+    },
+    {
+      "prompt_summary": "```json",
+      "response_summary": "```json {   \"tasks\": [     {       \"Title\": \"Conduct a 3-Minute Productivity Flash Audit\",       \"Description\": \"Quickly",
+      "timestamp": 1762952116
+    },
+    {
+      "prompt_summary": "Here are 3 purposeful micro-tasks structured for rapid execu, ```json",
+      "response_summary": "Here are 3 purposeful micro-tasks structured for rapid execution within your 15-minute learning window:  ```json {   \"ta",
+      "timestamp": 1762952159
+    },
+    {
+      "prompt_summary": "Study Tips",
+      "response_summary": "### Micro-Task 1   **Title**: **Execute a 5-Minute Active Recall Blitz**   **Detailed Description**:   Review a recent h",
+      "timestamp": 1762953150
     },
     {
       "prompt_summary": "Productivity",
-      "response_summary": "### Micro-Task 1: **Time-Blocking Your Teaching Prep**   **Description:** Design a 15-minute time-blocked schedule for a",
-      "timestamp": 1762531999
+      "response_summary": "### Micro-Task 1   **Title**: **7-Minute Priority Sprint**   **Detailed Description**:   List all pending tasks on stick",
+      "timestamp": 1762954455
     },
     {
       "prompt_summary": "Productivity",
-      "response_summary": "### Micro-Task 1   **Title:** 5-Minute Desk Declutter   **Description:** Clear and organize your workspace in just five",
-      "timestamp": 1762532596
+      "response_summary": "### **Micro-Task 1**   **Title**: **Eisenhower Matrix Sprint**   **Detailed Description**:   Sort your current to-do lis",
+      "timestamp": 1762954695
     },
     {
-      "prompt_summary": "communication skills",
-      "response_summary": "### Micro-Task 1   **Title:** Active Listening Drill   **Description:** Practice focused listening using a 10-minute edu",
-      "timestamp": 1762534120
-    },
-    {
-      "prompt_summary": "communication skills",
-      "response_summary": "Here are 3 targeted micro-tasks to develop your communication skills as an engineering student, building on your prior l",
-      "timestamp": 1762535221
-    },
-    {
-      "prompt_summary": "communication skills",
-      "response_summary": "Here are 3 targeted micro-tasks to elevate your technical communication skills as an engineering student:  ---  **1. Tit",
-      "timestamp": 1762535751
-    }
-  ],
-  "David Kim": [
-    {
-      "prompt_summary": "communications",
-      "response_summary": "### Task 1: **Understanding Communication Contexts**   **Description**   Learn the *purpose* of context in communication",
-      "timestamp": 1762534606
+      "prompt_summary": "Productivity",
+      "response_summary": "Here are 3 productivity micro-tasks designed for your engineering student context, building on your previous learning:",
+      "timestamp": 1762954797
     }
   ]
 }
