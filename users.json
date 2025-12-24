@@ -1,14 +1,10 @@
 {
-  "sharvani": {
-    "name": "shar",
-    "password": "1234"
-  },
-  "kalyani5": {
+  "1234": {
     "name": "kalyani",
     "password": "1234"
   },
-  "saki": {
-    "name": "sakethh",
+  "kalyani": {
+    "name": "kalyani",
     "password": "1234"
   }
 }

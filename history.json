@@ -1,54 +1,28 @@
 {
-  "kalyani5": [
+  "kalyani": [
     {
-      "prompt_summary": "Productivity",
-      "response_summary": "### Micro-Task 1   **Title**: *Define Your Top 3 Daily Goals*   **Detailed Description**:   Start by identifying the **m",
-      "timestamp": 1762950201
+      "title": "Understand Variables and Basic Operators  ",
+      "timestamp": 1766588618
     },
     {
-      "prompt_summary": "Prioritize Tasks with the Eisenhower Matrix, Set Up a 5-Minute Shutdown Routine, Revamp Your Distraction List into Action",
-      "response_summary": "## Task 1: **Prioritize Tasks with the Eisenhower Matrix** **Detailed Description** (4\u20136 sentences) Learn to categorize",
-      "timestamp": 1762950259
+      "title": "Write Simple Conditional Statements  ",
+      "timestamp": 1766588618
     },
     {
-      "prompt_summary": "Design Your Focus-Driven Daily Blueprint, Execute the Eisenhower Sprint Challenge, Conduct a Lightning-Fast Productivity Audit",
-      "response_summary": "## Task 1: **Design Your Focus-Driven Daily Blueprint** **Detailed Description** (4\u20136 sentences) Create a 15-minute time",
-      "timestamp": 1762951048
+      "title": "Create Your First Function  ",
+      "timestamp": 1766588618
     },
     {
-      "prompt_summary": "Productivity",
-      "response_summary": "### Micro-Task 1   **Title**: **Execute a 12-Minute Hyper-Focused Work Sprint**   **Detailed Description**:   Set a time",
-      "timestamp": 1762951275
+      "title": "Practice Keyboard Shortcuts for Faster Coding  ",
+      "timestamp": 1766589141
     },
     {
-      "prompt_summary": "```json",
-      "response_summary": "```json {   \"tasks\": [     {       \"Title\": \"Conduct a 3-Minute Productivity Flash Audit\",       \"Description\": \"Quickly",
-      "timestamp": 1762952116
+      "title": "Break Down a Problem into Reusable Functions  ",
+      "timestamp": 1766589141
     },
     {
-      "prompt_summary": "Here are 3 purposeful micro-tasks structured for rapid execu, ```json",
-      "response_summary": "Here are 3 purposeful micro-tasks structured for rapid execution within your 15-minute learning window:  ```json {   \"ta",
-      "timestamp": 1762952159
-    },
-    {
-      "prompt_summary": "Study Tips",
-      "response_summary": "### Micro-Task 1   **Title**: **Execute a 5-Minute Active Recall Blitz**   **Detailed Description**:   Review a recent h",
-      "timestamp": 1762953150
-    },
-    {
-      "prompt_summary": "Productivity",
-      "response_summary": "### Micro-Task 1   **Title**: **7-Minute Priority Sprint**   **Detailed Description**:   List all pending tasks on stick",
-      "timestamp": 1762954455
-    },
-    {
-      "prompt_summary": "Productivity",
-      "response_summary": "### **Micro-Task 1**   **Title**: **Eisenhower Matrix Sprint**   **Detailed Description**:   Sort your current to-do lis",
-      "timestamp": 1762954695
-    },
-    {
-      "prompt_summary": "Productivity",
-      "response_summary": "Here are 3 productivity micro-tasks designed for your engineering student context, building on your previous learning:",
-      "timestamp": 1762954797
+      "title": "Debug with Targeted `console.log` Statements  ",
+      "timestamp": 1766589141
     }
   ]
 }
