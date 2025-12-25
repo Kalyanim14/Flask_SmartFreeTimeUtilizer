@@ -6,12 +6,12 @@ To setup the project do the following:
 the .env should look like  this: 
 
 >OPENROUTER_API_KEY=sk-or-v1-xyzxxxxxxxxxxxxxxxxxxxx
-
-MYSQL_HOST=127.0.0.1
-MYSQL_USER=root
-MYSQL_PASSWORD=sharvan8
-MYSQL_DATABASE=smartfreetime
-MYSQL_PORT=3306
+>
+>MYSQL_HOST=127.0.0.1
+>MYSQL_USER=root
+>MYSQL_PASSWORD=sharvan8
+>MYSQL_DATABASE=smartfreetime
+>MYSQL_PORT=3306
 
 The database should contain the following tables in smartfreetime database:
 
