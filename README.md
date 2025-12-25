@@ -9,7 +9,7 @@
 -
 - MYSQL_HOST=127.0.0.1
 - MYSQL_USER=root
-- MYSQL_PASSWORD=sharvan8
+- MYSQL_PASSWORD=password
 - MYSQL_DATABASE=smartfreetime
 - MYSQL_PORT=3306
 
