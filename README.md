@@ -1,9 +1,9 @@
 # To setup the project do the following:
 
- ## run requirements.txt
+ ## Run requirements.txt
  ```pip install -r requirements.txt```
 
-## the .env should look like  this: 
+## .env should look like  this: 
 
 - OPENROUTER_API_KEY=sk-or-v1-xyzxxxxxxxxxxxxxxxxxxxx
 -
@@ -40,9 +40,10 @@ mysql> desc users;
 +----------+--------------+------+-----+---------+----------------+
 4 rows in set (0.01 sec)
 ```
-
+## Use follwing commands to run the code
 use this command to run backend:
 ```python app.py```
 
 use this command to run frontend:
 ```npm run dev```
+*** Note: *** Don't forget to add your own Openrouter API Key
