@@ -15,6 +15,7 @@ MYSQL_PORT=3306
 
 The database should contain the following tables in smartfreetime database:
 
+```
 mysql> desc history;
 +-----------+--------------+------+-----+---------+----------------+
 | Field     | Type         | Null | Key | Default | Extra          |
@@ -25,7 +26,9 @@ mysql> desc history;
 | timestamp | int          | NO   |     | NULL    |                |
 +-----------+--------------+------+-----+---------+----------------+
 4 rows in set (0.02 sec)
+```
 
+```
 mysql> desc users;
 +----------+--------------+------+-----+---------+----------------+
 | Field    | Type         | Null | Key | Default | Extra          |
@@ -36,7 +39,7 @@ mysql> desc users;
 | password | varchar(120) | NO   |     | NULL    |                |
 +----------+--------------+------+-----+---------+----------------+
 4 rows in set (0.01 sec)
-
+```
 
 use this command to run backend:
 ```python app.py```
