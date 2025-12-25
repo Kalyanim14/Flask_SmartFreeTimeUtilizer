@@ -45,5 +45,7 @@ use this command to run backend:
 ```python app.py```
 
 use this command to run frontend:
-```npm run dev```\
+```npm run dev```
+
+
 ***Note:*** Don't forget to add your own Openrouter API Key
