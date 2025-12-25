@@ -5,7 +5,7 @@ To setup the project do the following:
 
 the .env should look like  this: 
 
-OPENROUTER_API_KEY=sk-or-v1-xyzxxxxxxxxxxxxxxxxxxxx
+>OPENROUTER_API_KEY=sk-or-v1-xyzxxxxxxxxxxxxxxxxxxxx
 
 MYSQL_HOST=127.0.0.1
 MYSQL_USER=root
