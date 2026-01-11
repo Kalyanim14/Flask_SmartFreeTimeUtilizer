@@ -1,0 +1,104 @@
+{
+  "info": {
+    "_postman_id": "9de2239a-a9bc-4299-8c96-9f3c01755f10",
+    "name": "SmartFreeTimeUtilizer",
+    "description": "StartFragment\n\n**Smart Free Time Utilizer** is a web-based application designed to help users make productive use of their free time through **personalized micro-learning recommendations**. The system collects user details such as age, interests, available time, and learning context, and uses **AI-powered content generation** to suggest small, structured learning tasks.\n\nThe application intelligently considers the user’s **previous learning history** to avoid repetition and ensure continuity in learning. Each recommendation is broken into clear micro-tasks with titles, detailed explanations, and practical tips, making it easy for users to learn effectively within short time periods.\n\nThe backend is built using **Flask and MySQL**, handling user authentication, history management, and AI integration, while the frontend provides a simple and interactive user experience. This project demonstrates the use of **AI, RESTful APIs, and database-driven personalization** to promote smart and efficient learning.\n\nEndFragment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "SignUp",
+      "id": "2e74777f-738b-4cb6-a22a-95d01669b1a8",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "## Login API\n\n**Endpoint:** `/api/auth/login`  \n**Method:** POST\n\n### Request Body\n\n```\njson\n{\n\"name\": \"sivasakethram\",\n\"username\":\"ram\",\n\"password\": \"123456\"\n}\n\n ```"
+      },
+      "response": []
+    },
+    {
+      "name": "SignIn",
+      "id": "53586653-1c09-42bc-9a59-c97ffcf352bc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "## Login API\n\n**Endpoint:** `/api/auth/login`  \n**Method:** POST\n\n### Request Body\n\n```\njson\n{\n\"username\":\"ram\",\n\"password\":\"1234\"\n}\n\n ```"
+      },
+      "response": []
+    },
+    {
+      "name": "Interaction with LLM",
+      "id": "2eda394e-01b7-4653-a036-5cc167815ab9",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"ram\",\r\n  \"name\": \"sivasakethram\",\r\n  \"age\": \"5\",\r\n  \"topic\": \"alphabets\",\r\n  \"domain\": \"school kid\",\r\n  \"time_available\": \"2 hours\",\r\n  \"context\": \"NULL\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/api/process-data",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "process-data"
+          ]
+        },
+        "description": "## LLM API\n\n**Endpoint:** api/process-data  \n**Method:** POST"
+      },
+      "response": []
+    },
+    {
+      "name": "Retrieve history",
+      "id": "9f79ab03-c670-4a11-98de-eda7c9cddc34",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "**Endpoint:** `/api/history/`  \n**Method:** GET"
+      },
+      "response": []
+    },
+    {
+      "name": "Retrieve history",
+      "id": "027675eb-963c-41dc-9e14-98cf18f58afc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "**Endpoint:** `/history/`  \n**Method:** GET"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete history",
+      "id": "0d8244f4-e852-4685-9eb4-ce9968a16470",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "**Endpoint:** `/Delete/history`  \n**Method:** GET"
+      },
+      "response": []
+    },
+    {
+      "name": "Health",
+      "id": "31bd426e-4a92-4397-8923-6c9adb4271de",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "description": "**Endpoint:** `/health`  \n**Method:** GET"
+      },
+      "response": []
+    }
+  ]
+}
