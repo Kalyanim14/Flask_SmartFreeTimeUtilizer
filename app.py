@@ -120,6 +120,7 @@ def process_data():
         if not data:
             return jsonify({'error': 'No JSON data provided'}), 400
 
+        # ===== Validate required fields =====
         for field in ['username', 'name', 'age', 'topic']:
             if not str(data.get(field, '')).strip():
                 return jsonify({'error': f'Missing required field: {field}'}), 400
@@ -135,18 +136,17 @@ def process_data():
         # ===== Fetch recent history (titles only) =====
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
-
         cursor.execute(
             "SELECT title FROM history WHERE username=%s ORDER BY timestamp DESC LIMIT 3",
             (username,)
         )
         rows = cursor.fetchall()
-
         recent_history_summary = (
             "\n".join(f"- {r['title']}" for r in rows)
             if rows else "No prior history."
         )
 
+        # ===== Prepare user prompt =====
         user_prompt = (
             f"I'm {name}, a {age}-year-old in {domain}. "
             f"I have {time_available} to learn {topic} in context: {context}. "
@@ -158,21 +158,29 @@ def process_data():
             "Use clear headings and proper formatting."
         )
 
-        completion = client.chat.completions.create(
-            extra_headers={
-                "HTTP-Referer": "http://localhost:3000",
-                "X-Title": "SmartFreeTimeUtilizer"
-            },
-            model="tngtech/deepseek-r1t2-chimera:free",
-            messages=[
-                {"role": "system", "content": "You are a helpful AI tutor who provides structured, well-formatted learning tasks."},
-                {"role": "user", "content": user_prompt}
-            ]
-        )
+        # ===== Function to call any LLM =====
+        def get_ai_response(model_name):
+            return client.chat.completions.create(
+                extra_headers={
+                    "HTTP-Referer": "http://localhost:3000",
+                    "X-Title": "SmartFreeTimeUtilizer"
+                },
+                model=model_name,
+                messages=[
+                    {"role": "system", "content": "You are a helpful AI tutor who provides structured, well-formatted learning tasks."},
+                    {"role": "user", "content": user_prompt}
+                ]
+            ).choices[0].message.content.strip()
 
-        ai_response = completion.choices[0].message.content.strip()
+        # ===== Try primary model, fallback if it fails =====
+        try:
+            ai_response = get_ai_response("tngtech/deepseek-r1t2-chimera:free")
+        except Exception as e:
+            print("Primary model failed, using fallback LLM:", e)
+            #fallback model llama
+            ai_response = get_ai_response("meta-llama/llama-3.3-70b-instruct:free")
 
-        # ===== Store ONLY titles =====
+        # ===== Extract and store only titles =====
         titles = extract_titles(ai_response)
         for title in titles:
             cursor.execute(
@@ -192,6 +200,7 @@ def process_data():
     except Exception as e:
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
+
 
 # ================= History Routes =================
 
