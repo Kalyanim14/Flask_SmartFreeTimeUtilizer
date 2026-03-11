@@ -14,7 +14,25 @@
 - MYSQL_PORT=3306
 
 ## The database should contain the following tables in smartfreetime database:
+### DB Commands
+```
+CREATE TABLE users (
+    id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(80) NOT NULL UNIQUE,
+    name VARCHAR(120),
+    password VARCHAR(120) NOT NULL,
+    PRIMARY KEY (id)
+);
 
+CREATE TABLE history (
+    id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(80) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    timestamp INT NOT NULL,
+    PRIMARY KEY (id),
+    INDEX (username)
+);
+```
 ```
 mysql> desc history;
 +-----------+--------------+------+-----+---------+----------------+
