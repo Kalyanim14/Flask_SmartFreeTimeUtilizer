@@ -152,7 +152,7 @@ def process_data():
             f"I have {time_available} to learn {topic} in context: {context}. "
             f"Previously I have learnt about:\n{recent_history_summary}\n\n"
             "Please provide EXACTLY 3 micro-tasks. For EACH task, give this structure:\n"
-            "1. **Title**:\n"
+            "1. ### **Title**:\n"
             "2. **Detailed Description** (4–6 sentences)\n"
             "3. **Small Tips** (bullet list of 3 items)\n\n"
             "Use clear headings and proper formatting."
@@ -174,11 +174,11 @@ def process_data():
 
         # ===== Try primary model, fallback if it fails =====
         try:
-            ai_response = get_ai_response("tngtech/deepseek-r1t2-chimera:free")
+            ai_response = get_ai_response("mistralai/mistral-7b-instruct:free")
         except Exception as e:
             print("Primary model failed, using fallback LLM:", e)
             #fallback model llama
-            ai_response = get_ai_response("meta-llama/llama-3.3-70b-instruct:free")
+            ai_response = get_ai_response("nvidia/nemotron-3-nano-30b-a3b:free")
 
         # ===== Extract and store only titles =====
         titles = extract_titles(ai_response)
