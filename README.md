@@ -16,6 +16,10 @@
 ## The database should contain the following tables in smartfreetime database:
 ### DB Commands
 ```
+CREATE DATABASE smartfreetime;
+
+USE smartfreetime;
+
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(80) NOT NULL UNIQUE,
@@ -31,6 +35,14 @@ CREATE TABLE history (
     timestamp INT NOT NULL,
     PRIMARY KEY (id),
     INDEX (username)
+);
+
+CREATE TABLE ai_history (
+id INT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(100),
+user_prompt TEXT,
+ai_response LONGTEXT,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 ```
