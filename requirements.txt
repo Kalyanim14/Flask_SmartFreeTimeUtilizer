@@ -3,3 +3,4 @@ gunicorn
 flask-cors
 python-dotenv
 openai
+mysql-connector-python
