@@ -222,7 +222,7 @@ Rules:
             return client.chat.completions.create(
 
                 extra_headers={
-                    "HTTP-Referer": "http://localhost:3000",
+                    "HTTP-Referer": "https://flask-smartfreetimeutilizer.onrender.com/",
                     "X-Title": "SmartFreeTimeUtilizer"
                 },
 
