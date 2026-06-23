@@ -78,22 +78,6 @@ GET /api/health
 * title
 * timestamp
 
-## Screenshots
-
-### API Testing
-
-![Postman](screenshots/postman.png)
-
-### Database Schema
-
-![Database](screenshots/database.png)
-
-### Recommendation Response
-
-![Response](screenshots/recommendation-response.png)
-
-> Add screenshots to the `screenshots` folder to display them automatically in GitHub.
-
 ## Project Structure
 
 ```text
