@@ -1,4 +1,142 @@
-# To setup the project do the following:
+# Smart Free Time Utilizer - Backend
+
+A Flask-based backend service that leverages Large Language Models (LLMs) to generate personalized productivity and learning recommendations. The system analyzes user preferences, available time, and historical activities to provide relevant and non-repetitive suggestions.
+
+## Features
+
+* User Authentication
+* Personalized Activity Generation
+* AI-Powered Recommendation Engine
+* Activity History Management
+* RESTful API Architecture
+* MySQL Database Integration
+* User Preference Tracking
+
+## Tech Stack
+
+### Backend
+
+* Python
+* Flask
+* MySQL
+* REST APIs
+
+### AI Integration
+
+* OpenRouter API
+* Large Language Models (LLMs)
+
+## System Workflow
+
+1. User submits interests and available time.
+2. Backend retrieves recent activity history.
+3. Context is sent to the LLM.
+4. AI generates personalized recommendations.
+5. Results are returned and stored for future personalization.
+
+## API Endpoints
+
+### Authentication
+
+```http
+POST /signup
+POST /signin
+```
+
+### Recommendation Engine
+
+```http
+POST /api/process-data
+```
+
+### Activity History
+
+```http
+GET    /api/history/<username>
+DELETE /api/history/<username>
+```
+
+### Health Check
+
+```http
+GET /api/health
+```
+
+## Database Schema
+
+### Users
+
+* id
+* username
+* name
+* password
+
+### History
+
+* id
+* username
+* title
+* timestamp
+
+## Screenshots
+
+### API Testing
+
+![Postman](screenshots/postman.png)
+
+### Database Schema
+
+![Database](screenshots/database.png)
+
+### Recommendation Response
+
+![Response](screenshots/recommendation-response.png)
+
+> Add screenshots to the `screenshots` folder to display them automatically in GitHub.
+
+## Project Structure
+
+```text
+backend/
+├── app.py
+├── requirements.txt
+├── database/
+└── config/
+```
+
+## Installation
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate the environment:
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application:
+
+```bash
+python app.py
+```
+
+Backend runs at:
+
+```text
+http://localhost:5000
+```
+
+# To setup the project do the following (In detail):
 
  ## Run requirements.txt
  ```pip install -r requirements.txt```
@@ -79,3 +217,12 @@ use this command to run frontend:
 
 
 ***Note:*** Don't forget to add your own Openrouter API Key
+
+## Future Enhancements
+
+* User Goal Management
+* Calendar Integration
+* Multi-Model AI Support
+* Analytics Dashboard
+* Personalized Learning Paths
+
