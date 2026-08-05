@@ -128,6 +128,8 @@ http://localhost:5000
 ## .env should look like  this: 
 
 - OPENROUTER_API_KEY=sk-or-v1-xyzxxxxxxxxxxxxxxxxxxxx
+- JWT_SECRET=use-a-long-random-secret-here
+- FRONTEND_ORIGIN=http://localhost:3000
 -
 - MYSQL_HOST=127.0.0.1
 - MYSQL_USER=root
@@ -167,6 +169,8 @@ ai_response LONGTEXT,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
+
+Run `schema.sql` once after creating the database to add the JWT-protected taskboard table.
 ```
 mysql> desc history;
 +-----------+--------------+------+-----+---------+----------------+
